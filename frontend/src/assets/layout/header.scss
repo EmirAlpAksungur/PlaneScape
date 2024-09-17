@@ -2,13 +2,32 @@
 .app-header {
   min-width: 300px;
   justify-content: space-between;
-  padding: 8px 16px;
+  padding: 8px 0px;
   overflow: hidden;
-
   &__left {
     display: flex;
     align-items: center;
     width: max-content;
+    gap: 4px;
+    cursor: pointer;
+    &__icon-btn {
+      background-color: $light-primary !important;
+      padding: 0px !important;
+      border: 2px solid white !important;
+      &__icon {
+        position: relative;
+        left: -3px;
+        transform: rotate(90deg);
+        color: white;
+      }
+    }
+    &__company-name {
+      font-size: 1.6rem;
+      font-weight: bold;
+      @include themify($themes) {
+        color: themed("text");
+      }
+    }
   }
   &__right {
     display: flex;
@@ -17,7 +36,6 @@
     &__btn-theme {
       width: 31px;
       height: 31px;
-
       &__dark-mode {
         position: relative;
         right: -7.5px;
@@ -30,9 +48,23 @@
       }
     }
     &__btn {
-      gap: 8px;
-      &__user-name {
+      gap: 4px;
+      &:hover {
+        @include themify($themes) {
+          background-color: rgba($color: themed("primary"), $alpha: 0.2);
+        }
+      }
+      &__icon {
+        @include themify($themes) {
+          color: themed("primary");
+        }
+      }
+      &__text {
         font-size: 1.2rem;
+        text-transform: capitalize;
+        @include themify($themes) {
+          color: themed("text-secondary");
+        }
       }
     }
   }

@@ -1,5 +1,4 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
 
 import AirplanemodeActiveIcon from "@mui/icons-material/AirplanemodeActive";
 import { Avatar, Grid, Button, IconButton } from "@mui/material";
@@ -7,7 +6,8 @@ import { styled } from "@mui/material/styles";
 import "../../assets/layout/header.scss";
 import ThemeSelect from "./ThemeSelect";
 import { routeToUrl } from "../../routers/utils";
-
+import LocalOfferIcon from "@mui/icons-material/LocalOffer";
+import PublicIcon from "@mui/icons-material/Public";
 const SmallAvatar = styled(Avatar)(({ theme }) => ({
   width: 26,
   height: 26,
@@ -15,58 +15,50 @@ const SmallAvatar = styled(Avatar)(({ theme }) => ({
 }));
 
 const Header: React.FC = () => {
-  const location = useLocation();
-
   return (
     <Grid container className="app-header" columnSpacing={2}>
       <Grid
         item
         className="app-header__left"
-        xs
         onClick={() => {
           routeToUrl("/");
         }}
       >
         <Grid item>
-          <AirplanemodeActiveIcon />
+          <IconButton className="app-header__left__icon-btn">
+            <AirplanemodeActiveIcon
+              fontSize="large"
+              className="app-header__left__icon-btn__icon"
+            />
+          </IconButton>
         </Grid>
-        <Grid item>PLANE SCAPE</Grid>
+        <Grid item className="app-header__left__company-name">
+          PLANE SCAPE
+        </Grid>
       </Grid>
       <Grid item className="app-header__right">
-        <Grid item>
-          <Button
-            variant="text"
-            className={`app-header__left__btn ${
-              location.pathname.split("/")?.[1] === "my-flights"
-                ? "app-header__left__btn__active"
-                : ""
-            }`}
-            onClick={() => {
-              routeToUrl("/my-flights");
-            }}
-          >
-            My Flights
-          </Button>
-        </Grid>
-        <Grid item>
-          <Button
-            variant="text"
-            className={`app-header__left__btn ${
-              location.pathname.split("/")?.[1] === "profile"
-                ? "app-header__left__btn__active"
-                : ""
-            }`}
-            onClick={() => {
-              routeToUrl("/profile");
-            }}
-          >
-            Profile
-          </Button>
-        </Grid>
+        <Button
+          className="app-header__right__btn"
+          onClick={() => {
+            routeToUrl("/my-flights");
+          }}
+        >
+          <LocalOfferIcon className="app-header__right__btn__icon" />
+          <span className="app-header__right__btn__text">Deals</span>
+        </Button>
+        <Button
+          className="app-header__right__btn"
+          onClick={() => {
+            routeToUrl("/profile");
+          }}
+        >
+          <PublicIcon className="app-header__right__btn__icon" />
+          <span className="app-header__right__btn__text">Discover</span>
+        </Button>
         <ThemeSelect />
-        <Button className="app-header__right__btn">
+        <Button className="app-header__right__btn" disabled>
           <SmallAvatar />
-          <span className="app-header__right__btn__user-name">JWT User</span>
+          <span className="app-header__right__btn__text">Joane Smith</span>
         </Button>
       </Grid>
     </Grid>

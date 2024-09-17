@@ -1,0 +1,12 @@
+@import "./palette/palette.scss";
+@import "./components/container.scss";
+.root {
+  height: 100vh;
+  @include themify($themes) {
+    background-color: themed("bg");
+  }
+  &__container {
+    margin: auto;
+    @include container-widths;
+  }
+}
