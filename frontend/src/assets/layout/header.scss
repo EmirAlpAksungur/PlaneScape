@@ -1,0 +1,39 @@
+@import "../palette/palette.scss";
+.app-header {
+  min-width: 300px;
+  justify-content: space-between;
+  padding: 8px 16px;
+  overflow: hidden;
+
+  &__left {
+    display: flex;
+    align-items: center;
+    width: max-content;
+  }
+  &__right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    &__btn-theme {
+      width: 31px;
+      height: 31px;
+
+      &__dark-mode {
+        position: relative;
+        right: -7.5px;
+        color: white;
+      }
+      &__light-mode {
+        position: relative;
+        right: 7.5px;
+        color: black;
+      }
+    }
+    &__btn {
+      gap: 8px;
+      &__user-name {
+        font-size: 1.2rem;
+      }
+    }
+  }
+}
