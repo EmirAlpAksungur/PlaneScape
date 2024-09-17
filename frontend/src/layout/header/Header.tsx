@@ -8,11 +8,6 @@ import ThemeSelect from "./ThemeSelect";
 import { routeToUrl } from "../../routers/utils";
 import LocalOfferIcon from "@mui/icons-material/LocalOffer";
 import PublicIcon from "@mui/icons-material/Public";
-const SmallAvatar = styled(Avatar)(({ theme }) => ({
-  width: 26,
-  height: 26,
-  border: `2px solid ${theme.palette.background.paper}`,
-}));
 
 const Header: React.FC = () => {
   return (
@@ -57,7 +52,7 @@ const Header: React.FC = () => {
         </Button>
         <ThemeSelect />
         <Button className="app-header__right__btn" disabled>
-          <SmallAvatar />
+          <Avatar className="app-header__right__btn__avatar" />
           <span className="app-header__right__btn__text">Joane Smith</span>
         </Button>
       </Grid>

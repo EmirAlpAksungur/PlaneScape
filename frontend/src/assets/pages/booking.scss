@@ -1,0 +1,42 @@
+@import "../components/box/box.scss";
+
+.booking {
+  flex-direction: row-reverse;
+  &__left {
+    &__container {
+      &__book-your-flight {
+        padding: 12px;
+        @include defaultBox();
+      }
+    }
+  }
+  &__right {
+    &__container {
+      &__item {
+        border-radius: 12px;
+        width: 100%;
+        height: 200px;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        color: white;
+        padding: 16px;
+        display: flex;
+        align-content: flex-end;
+        gap: 4px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .booking {
+    &__right {
+      &__container {
+        &__item {
+          height: 100%;
+        }
+      }
+    }
+  }
+}

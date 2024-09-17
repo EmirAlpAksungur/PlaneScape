@@ -1,0 +1,9 @@
+@import "../../palette/palette.scss";
+@mixin defaultBox {
+  border-radius: 12px;
+  border: 1px solid;
+  @include themify($themes) {
+    border-color: themed("box-border");
+    background-color: themed("box-background");
+  }
+}

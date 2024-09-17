@@ -16,6 +16,9 @@ $themes: (
     text-secondary: $light-text-secondary,
     //background
     bg: $light-bg,
+    //box
+    box-border: rgb(230, 235, 241),
+    box-background: rgb(255, 255, 255),
     //General
     primary: $light-primary,
     error: #e57373,
@@ -28,6 +31,9 @@ $themes: (
     text-secondary: $dark-text-secondary,
     //background
     bg: $dark-bg,
+    //box
+    box-border: rgba(255, 255, 255, 0.05),
+    box-background: rgb(30, 30, 30),
     //General
     primary: $dark-primary,
     error: #d32f2f,
