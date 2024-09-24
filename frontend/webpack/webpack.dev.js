@@ -12,7 +12,9 @@ module.exports = {
     plugins: [
         new ReactRefreshWebpackPlugin(),
         new webpack.DefinePlugin({
-            'process.env.path': JSON.stringify('https://demotrainiq.com'),
+            'process.env.iata': JSON.stringify('http://localhost:5000'),
+            'process.env.schiphol': JSON.stringify('http://localhost:5001'),
+            'process.env.booking': JSON.stringify('http://localhost:5002'),
         }),
     ],
 }

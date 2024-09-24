@@ -39,18 +39,18 @@ const Header: React.FC = () => {
           }}
         >
           <LocalOfferIcon className="app-header__right__btn__icon" />
-          <span className="app-header__right__btn__text">Deals</span>
+          <span className="app-header__right__btn__text">My Flights</span>
         </Button>
         <Button
           className="app-header__right__btn"
           onClick={() => {
-            routeToUrl("/profile");
+            routeToUrl("/booking");
           }}
         >
           <PublicIcon className="app-header__right__btn__icon" />
           <span className="app-header__right__btn__text">Discover</span>
         </Button>
-        <ThemeSelect />
+        {/* <ThemeSelect /> */}
         <Button className="app-header__right__btn" disabled>
           <Avatar className="app-header__right__btn__avatar" />
           <span className="app-header__right__btn__text">Joane Smith</span>

@@ -1,3 +1,4 @@
 import Notification from "./notification/Notification";
 import Loadable from "./loading/Loadable";
-export { Notification, Loadable };
+import MyDialog from "./dialog/Main";
+export { Notification, Loadable, MyDialog };

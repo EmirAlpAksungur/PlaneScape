@@ -134,3 +134,6 @@ __pycache__/
 #------frontend
 frontend/package-lock.json
 frontend/build
+
+package-lock.json
+mongo_data*

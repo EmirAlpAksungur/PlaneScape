@@ -1,15 +1,9 @@
 @import "../components/box/box.scss";
-
+@import "../palette/palette.scss";
+@import "./left.scss";
 .booking {
   flex-direction: row-reverse;
-  &__left {
-    &__container {
-      &__book-your-flight {
-        padding: 12px;
-        @include defaultBox();
-      }
-    }
-  }
+  @include left();
   &__right {
     &__container {
       &__item {

@@ -3,7 +3,7 @@ version: "3"
 services:
   frontend:
     restart: unless-stopped
-    container_name: frontend
+    container_name: plane-scape-frontend
     build:
       context: .
       dockerfile: docker/frontend/Dockerfile
@@ -11,8 +11,81 @@ services:
       - "3000:3000"
     networks:
       - network
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.10.0
+    container_name: plane-scape-elasticsearch
+    environment:
+      - cluster.name=es
+      - discovery.type=single-node
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - xpack.security.enabled=false
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    volumes:
+      - es_data:/usr/share/elasticsearch/data
+    networks:
+      - network
+  nodejs:
+    build:
+      context: .
+      dockerfile: docker/services/iata/Dockerfile
+    container_name: plane-scape-iata
+    depends_on:
+      - elasticsearch
+    environment:
+      - ELASTICSEARCH_URL=http://elasticsearch:9200
+    ports:
+      - "5000:5000"
+    networks:
+      - network
+  nodejsproxy:
+    build:
+      context: .
+      dockerfile: docker/services/proxy/Dockerfile
+    container_name: plane-scape-proxy
+    ports:
+      - "5001:5001"
+    networks:
+      - network
+
+  mongo:
+    image: mongo
+    container_name: plane-scape-mongo
+    restart: always
+    command: mongod --noauth
+    volumes:
+      - ./mongo_data:/data/db
+    networks:
+      - network
+  mongo-express:
+    image: mongo-express
+    container_name: plane-scape-mongo-express
+    restart: always
+    ports:
+      - 8081:8081
+    environment:
+      ME_CONFIG_MONGODB_URL: mongodb://mongo:27017/
+      ME_CONFIG_BASICAUTH: false
+    depends_on:
+      - mongo
+    networks:
+      - network
+  nodejsbooking:
+    build:
+      context: .
+      dockerfile: docker/services/booking/Dockerfile
+    container_name: plane-scape-booking
+    ports:
+      - "5002:5002"
+    depends_on:
+      - mongo
+    networks:
+      - network
 volumes:
   node_modules:
+  es_data:
+  mongo_data:
 networks:
   network:
     driver: bridge

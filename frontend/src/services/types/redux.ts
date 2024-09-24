@@ -1,1 +1,21 @@
+//Notifications
 export const CHANGE_NOTIFICATION = "CHANGE_NOTIFICATION";
+
+//Form
+export const CHANGE_TRIP_TYPE = "CHANGE_TRIP_TYPE";
+export const CHANGE_FROM = "CHANGE_FROM";
+export const CHANGE_TO = "CHANGE_TO";
+export const CHANGE_DATE1 = "CHANGE_DATE1";
+export const CHANGE_DATE2 = "CHANGE_DATE2";
+
+//FLIGTS
+export const CLEAN_FLIGHTS = "CLEAN_FLIGHTS";
+export const ADD_FLIGHTS = "ADD_FLIGHTS";
+export const CHANGE_FLIGHTS_PAGE = "CHANGE_FLIGHTS_PAGE";
+export const CHANGE_LOADINGS_FLIGHTS = "CHANGE_LOADINGS_FLIGHTS";
+export const CHANGE_LENGTH_FLIGHTS = "CHANGE_LENGTH_FLIGHTS";
+export const CHANGE_SORT_BY = "CHANGE_SORT_BY";
+
+//Round Trip
+export const CLEAN_ROUND_TRIP = "CLEAN_ROUND_TRIP";
+export const ADD_ROUND_TRIP = "ADD_ROUND_TRIP";

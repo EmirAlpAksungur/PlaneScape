@@ -1,16 +1,22 @@
 import { configureStore, combineReducers, Middleware } from "@reduxjs/toolkit";
 import { thunk } from "redux-thunk";
 
-import { notification } from "../services/reducers";
+import { notification, form, flights, roundTrip } from "../services/reducers";
 const { logger } = require(`redux-logger`);
 export interface RootState {
+  flights: any;
   notification: any;
+  form: any;
+  roundTrip: any;
 }
 
 const middleware: Middleware[] = [thunk, logger];
 
 const rootReducer = combineReducers<RootState>({
+  flights: flights,
   notification: notification,
+  form: form,
+  roundTrip: roundTrip,
 });
 
 export const store = configureStore({
