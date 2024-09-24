@@ -1,13 +1,20 @@
-Gereksinimler
-1- Docker Desktop
-2- Önerilen 8GB Ram
-3- Önerilen en az boş 5GB depolama alanı
+# Proje Adı
 
-Uygulamayı Nasıl Çalıştırırım ?
-1- Docker desktopu açınız. Eğer docker kurulumunuz yoksa "https://www.docker.com/" adresinden dockerı bilgisayarınıza kurunuz. Ve Docker desktopu açınız.
-2- Terminali açınıız ve proje dizinine gidiniz.
-3- "docker-compose up --build" çalıştırın. (yaklaşık 5 dakika sürecektir)
-4- Proje ayağa kalktıktan sonra "http://localhost:3000/" adresine gidebilirsiniz.
+## Gereksinimler
+
+1. **Docker Desktop**
+2. **Önerilen 8GB RAM**
+3. **Önerilen en az boş 5GB depolama alanı**
+
+## Uygulamayı Nasıl Çalıştırırım?
+
+1. **Docker Desktop'u açın.** Eğer Docker kurulumunuz yoksa, [docker.com](https://www.docker.com/) adresinden Docker'ı bilgisayarınıza kurun ve Docker Desktop'u açın.
+2. **Terminali açın** ve proje dizinine gidin.
+3. Aşağıdaki komutu çalıştırın:
+   ```bash
+   docker-compose up --build
+   ```
+4. Proje ayağa kalktıktan sonra http://localhost:3000/ adresini ziyaret edebilirsiniz
 
 Uygulama Nasıl Kullanılır ?
 ![alt text](image.png)
@@ -34,27 +41,23 @@ Yukarıda round trip seçili bir aramanın nasıl olduğunu görüyorsunuz.
 3- İkinci seçim yapıldıktan sonra uçuşlar listesinin üzerinde yukarıdaki resimde size gösterdiğim sekmeyi göreceksinzi.
 4- Bu sekmedeki Book Flight butonuna basıldığında uçuşunuz rezerve edilecek ve uçuşlarım sekmesinden takip edilebilir bir hale gelecektir.
 
-Kullanılan teknolojiler hakkında
-1- Docker uygulamanın derlenip kolay çalıştırılması için kullanılmakradır.
-2- Dockerda 3 tane nodejs server çalışmaktadır.
-a- Proxy service
-Bu serverın eklenmesindeki amaç schiphol serverlara direk reacttan istek gönderdiğimizde CORS hatası ile karşılaşmamız.
-Bunun için en mantıklı çözüm bir proxy serverdı.
-b- Iata service
-Iata server olak adlandırdığım bu server bize uçakların rotasyonlarını seçmemizde yardımcı oluyor.
-schipol apida destination api rota seçimlerini destekleyecek esneklikte değil ve hızlı metin aramayı desteklememektedir. Bunun için bu server frontend ve elastik search arasındaki bağlantıyı kurmaktadır.
-c- Booking service
-Bu servis bizim rezervasyonları mongodbye kaydetmemizi sağlayan servistir.
-3- Elastik search yukarıda bahsettiğim gibi rotasyon seçiminde hızlı havalimanı ve şehir arama seçenekleri için kullanılmaktadır.
-4- MongoDB rezervasyonların saklandığı databasedir.
-5- React uygulamanın frontendi için kullanılmıştır.
-a- Webpack uygulamanın build edilip kontrol aşamasında daha hızlı bir uı sunmak için eklenmiştir.
-b- Scss kod kalitesini arttırmak için eklenmiştir.
-c- State management için Redux kullanılmıştır.
-d- Routing işlemleri için history kütüphanesi kullanılmıştır.
-e- Material UI bir çok icon ve sağladığı componentler için kullanılmıştır.
-f- Typesctipt tip tanımlamarı eklenerek kod okunabilirliği arttırlamsı amaçlanmıştır.
-g- Axios ile nodejs serverlara API istekleri atılmıştır.
-h- React-resizable kullanılarak popupları daha etkin kullanılması sağlanmıştır.
-i- Uçuş listelerinde pagination kullanılmıştır. Eğer seçilen güzargahta ve tarihte 20 den fazla uçuş varsa sayfa aşağı indirildikçe 20 20 olmak üzere yavaş yavaş yüklenmektedir.
-j- Uçuş listesi ve rezervasyon yapılan uçuşlarım ekranında liste sanallaştırma kullanılmaktadır. Bu yüzden binlerce ve daha fazla uçuş listelenmek istense bile DOM bir sorun çıkartmayacaktır ve performansımız düşmeyecektir.
+Kullanılan Teknolojiler Hakkında
+
+1. **Docker**: Uygulamanın derlenip kolay çalıştırılması için kullanılmaktadır.
+2. **Docker'da 3 tane Node.js server çalışmaktadır**:
+   - **Proxy Service**: Bu serverın eklenmesindeki amaç, Schiphol sunucularına direkt React'tan istek gönderdiğimizde CORS hatası ile karşılaşmamızdır. Bunun için en mantıklı çözüm bir proxy serverdır.
+   - **Iata Service**: Uçakların rotasyonlarını seçmemizde yardımcı olan bu server, Schiphol API'da destination API rota seçimlerini destekleyecek esneklikte değildir ve hızlı metin aramayı desteklememektedir. Bunun için bu server, frontend ve Elasticsearch arasındaki bağlantıyı kurmaktadır.
+   - **Booking Service**: Bu servis, rezervasyonları MongoDB'ye kaydetmemizi sağlayan servistir.
+3. **Elasticsearch**: Hızlı havalimanı ve şehir arama seçenekleri için kullanılmaktadır.
+4. **MongoDB**: Rezervasyonların saklandığı databasedir.
+5. **React**: Uygulamanın frontend'i için kullanılmıştır.
+   - **Webpack**: Uygulamanın build edilip kontrol aşamasında daha hızlı bir UI sunmak için eklenmiştir.
+   - **SCSS**: Kod kalitesini arttırmak için eklenmiştir.
+   - **Redux**: State management için kullanılmıştır.
+   - **History Kütüphanesi**: Routing işlemleri için kullanılmıştır.
+   - **Material UI**: Birçok icon ve sağladığı componentler için kullanılmıştır.
+   - **TypeScript**: Tip tanımlamaları eklenerek kod okunabilirliği arttırılması amaçlanmıştır.
+   - **Axios**: Node.js serverlara API istekleri atılmıştır.
+   - **React-Resizable**: Popup'ların daha etkin kullanılması sağlanmıştır.
+   - **Pagination**: Uçuş listelerinde pagination kullanılmıştır. Eğer seçilen güzergah ve tarihte 20'den fazla uçuş varsa, sayfa aşağı indirildikçe 20'şer 20'şer yavaş yavaş yüklenmektedir.
+   - **Liste Sanallaştırma**: Uçuş listesi ve rezervasyon yapılan uçuşlarım ekranında liste sanallaştırma kullanılmaktadır. Bu yüzden binlerce ve daha fazla uçuş listelenmek istese bile DOM'da bir sorun çıkartmayacaktır ve performansımız düşmeyecektir.
